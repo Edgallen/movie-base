@@ -1,6 +1,7 @@
 .navBar {
   display: flex;
   position: fixed;
+  width: 90px;
   height: calc(100vh - 80px);
   padding: 25px;
   margin: 40px 0 40px 20px;
