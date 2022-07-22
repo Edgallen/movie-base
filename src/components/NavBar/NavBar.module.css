@@ -36,3 +36,30 @@
 .menu_item:hover {
   color: #F9FDFF;
 }
+
+.menu_item_active {
+  color: #F9FDFF;
+}
+
+.navBar__profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 2rem;
+  border-radius: 5rem;
+  background-color: #FC4649;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: .4s;
+}
+.navBar__profile:hover {
+  background-color: #F9FDFF;
+}
+
+.navBar__avatar {
+  border-radius: 5rem;
+  width: 56px;
+  height: 56px;
+}
