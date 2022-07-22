@@ -1,22 +1,17 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import MovieGrid from '../MovieGrid/MovieGrid';
 import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
+import Switcher from '../Switcher/Switcher';
 import Trending from '../Trending/Trending';
 import styles from './App.module.css';
 
 function App() {
   return (
-    <>
-      <header className={styles.header}>
-        <NavBar />
-      </header>
-      <main className={styles.main}>
-        <SearchBar />
-        <Trending />
-        <MovieGrid />
-      </main>
-    </>
+    <BrowserRouter>
+      <Switcher />
+    </BrowserRouter>
   );
 }
 
