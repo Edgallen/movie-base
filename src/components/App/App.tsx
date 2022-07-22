@@ -1,11 +1,15 @@
 import React from 'react';
+import NavBar from '../NavBar/NavBar';
 import styles from './App.module.css';
 
-const App = () => {
-
+function App() {
   return (
-      <h1 className={styles.title}>Hello world</h1>
+    <>
+      <header className={styles.header}>
+        <NavBar />
+      </header>
+    </>
   );
-};
+}
 
 export default App;

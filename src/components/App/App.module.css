@@ -1,0 +1,6 @@
+.header {
+  position: relative;
+  height: 100vh;
+  opacity: none;
+  overflow: auto;
+}
