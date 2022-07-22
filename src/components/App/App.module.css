@@ -1,0 +1,16 @@
+.header {
+  position: absolute;
+  height: 100vh;
+  opacity: none;
+  overflow: auto;
+  top: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 50px;
+  margin-left: 170px;
+  height: 80px;
+}
