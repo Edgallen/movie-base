@@ -13,3 +13,17 @@ body {
   color: #F9FDFF;
   overflow-x: hidden;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  width: 5px;
+  background-color: #5A688F;
+}
+
+::-webkit-scrollbar-track {
+  background: #10141F;
+}

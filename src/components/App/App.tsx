@@ -1,4 +1,5 @@
 import React from 'react';
+import MovieGrid from '../MovieGrid/MovieGrid';
 import NavBar from '../NavBar/NavBar';
 import SearchBar from '../SearchBar/SearchBar';
 import Trending from '../Trending/Trending';
@@ -13,6 +14,7 @@ function App() {
       <main className={styles.main}>
         <SearchBar />
         <Trending />
+        <MovieGrid />
       </main>
     </>
   );
