@@ -6,7 +6,7 @@ import {
   GET_PREMIERS_FAILED,
   GET_PREMIERS_REQUEST,
   GET_PREMIERS_SUCCESS,
-} from "../constants/filmTypes";
+} from "../constants/filmsTypes";
 import { TApplicationActions } from "../types";
 
 type TFilmsReducer = {

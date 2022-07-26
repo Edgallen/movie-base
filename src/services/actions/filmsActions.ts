@@ -7,7 +7,7 @@ import {
   GET_PREMIERS_FAILED,
   GET_PREMIERS_REQUEST,
   GET_PREMIERS_SUCCESS,
-} from '../constants/filmTypes';
+} from '../constants/filmsTypes';
 import { AppThunk } from '../types';
 import { privatData } from '../../utils/privatData';
  
@@ -38,12 +38,12 @@ export interface IGetPremiersFailed {
 };
 
 export type TFilmsActions = 
-    | IGetPopularFilmsRequest
-    | IGetPopularFilmsSuccess
-    | IGetPopularFilmsFailed
-    | IGetPremiersRequest
-    | IGetPremiersSuccess
-    | IGetPremiersFailed;
+  | IGetPopularFilmsRequest
+  | IGetPopularFilmsSuccess
+  | IGetPopularFilmsFailed
+  | IGetPremiersRequest
+  | IGetPremiersSuccess
+  | IGetPremiersFailed;
 
 export const getPopularFilmsRequest = (): IGetPopularFilmsRequest => {
   return {

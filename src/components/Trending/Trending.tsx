@@ -1,19 +1,23 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { getPopularFilms } from '../../services/actions/filmActions';
+import { getPopularFilms } from '../../services/actions/filmsActions';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import styles from './Trending.module.css';
 import { v4 as uuid } from 'uuid';
 import { TPopularFilm } from '../../types';
 import { Oval } from 'react-loader-spinner';
+import { useNavigate } from 'react-router';
 
 interface IPopularFilm {
   film: TPopularFilm;
 }
 
 const PopularFilm: FC<IPopularFilm> = ({ film }) => {
+  const navigate = useNavigate();
+
   const handleCardClick = () => {
-    console.log(film.nameRu)
+    console.log(film)
+    navigate(`movie/${film.filmId}`)
   }
 
   return (
@@ -56,6 +60,7 @@ const Trending = () => {
   useEffect(() => {
     dispatch(getPopularFilms());
   }, [])
+
 
   return (
     <section className={styles.trending}>

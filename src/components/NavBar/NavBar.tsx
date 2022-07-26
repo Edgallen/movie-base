@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import styles from './NavBar.module.css';
 
 type IActiveTab = 'dashboard' | 'movies' | 'TV-shows' | 'bookmark';
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<IActiveTab>('dashboard');
 
   const handleTabClick = (tab: string) => {
@@ -27,11 +29,15 @@ const NavBar = () => {
     }
   }
 
+  const returnHome = () => {
+    navigate('/');
+  }
+
   return (
     <header className={styles.header}>
       <nav className={styles.navBar}>
         <div className={styles.navBar__navigation}>
-          <div className={styles.navBar__logo}>
+          <div className={styles.navBar__logo} onClick={returnHome}>
             <i className={`ri-clapperboard-fill ${styles.logo}`}></i>
           </div>
 

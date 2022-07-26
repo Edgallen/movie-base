@@ -24,6 +24,10 @@
   gap: 5rem;
 }
 
+.navBar__logo {
+  cursor: pointer;
+}
+
 .logo {
   font-size: 40px;
   color: #FC4649;

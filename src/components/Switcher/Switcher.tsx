@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
-import { HomePage } from '../../pages'
+import { HomePage, MoviePage } from '../../pages'
 import NavBar from '../NavBar/NavBar'
 
 const Switcher = () => {
@@ -12,6 +12,7 @@ const Switcher = () => {
 
       <Routes>
         <Route path='/' element={<HomePage />}/>
+        <Route path='movie/:movieId' element={<MoviePage />} />
       </Routes>
     </>
   )

@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react';
-import { getPremiers } from '../../services/actions/filmActions';
+import { getPremiers } from '../../services/actions/filmsActions';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import styles from './MovieGrid.module.css';
 import { v4 as uuid } from 'uuid';
@@ -11,8 +11,12 @@ type TMovie = {
 }
 
 const Movie: FC<TMovie> = ({ movie }) => {
+  const handleMovieClick = () => {
+    console.log(movie.nameRu)
+  };
+
   return (
-    <div className={styles.movieGrid__card}>
+    <div className={styles.movieGrid__card} onClick={handleMovieClick}>
       <div className={styles.poster__card}>
         <div className={styles.movieGrid__button}>
           <i className={`ri-bookmark-line ${styles.movieGrid__bookmark}`}></i>
