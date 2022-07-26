@@ -5,18 +5,22 @@ import styles from './MovieGrid.module.css';
 import { v4 as uuid } from 'uuid';
 import { Oval } from 'react-loader-spinner';
 import { TPremier } from '../../types';
+import { useNavigate } from 'react-router';
 
 type TMovie = {
   movie: TPremier;
 }
 
 const Movie: FC<TMovie> = ({ movie }) => {
-  const handleMovieClick = () => {
-    console.log(movie.nameRu)
-  };
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    console.log(movie)
+    navigate(`movie/${movie.kinopoiskId}`)
+  }
 
   return (
-    <div className={styles.movieGrid__card} onClick={handleMovieClick}>
+    <div className={styles.movieGrid__card} onClick={handleCardClick}>
       <div className={styles.poster__card}>
         <div className={styles.movieGrid__button}>
           <i className={`ri-bookmark-line ${styles.movieGrid__bookmark}`}></i>

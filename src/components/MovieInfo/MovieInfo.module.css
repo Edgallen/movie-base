@@ -1,0 +1,166 @@
+.moviePage {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.poster__image {
+  width: 160px;
+  height: 240px;
+  object-fit: cover;
+}
+
+.poster__bio {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 0.4rem;
+}
+
+.poster__text {
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.description__container {
+  margin-left: 50px;
+}
+
+.description__title {
+  margin: 0 0 5px 0;
+  font-size: 35px;
+}
+
+.genre__container {
+  display: flex;
+  flex-direction: row;
+  gap: .7rem;
+}
+
+.genre__card {
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px #5A688F solid;
+  border-radius: 2rem;
+  color: #5A688F;
+  padding: .6rem 1rem .6rem 1rem;
+}
+
+.description__buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.trailer__button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #F9FDFF;
+  background-color: #5079FF;
+  border-radius: 2rem;
+  width: 220px;
+  height: 60px;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.trailer__button:hover {
+  background-color: #F9FDFF;
+  color: #5079FF;
+}
+
+.trailer__icon {
+  position: absolute;
+  left: 30px;
+  font-size: 20px;
+}
+
+.bookmark__button {
+  height: 60px;
+  width: 60px;
+  color: #5A688F;
+  border: 2px #5A688F solid;
+  border-radius: 2rem;
+  background-color: #10141F;
+  cursor: pointer;
+  transition: .4s;
+}
+
+.bookmark__button:hover {
+  color: #FC4649;
+  border: 2px #FC4649 solid;
+}
+
+.bookmark__icon {
+  font-size: 20px;
+}
+
+.trailer__text {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .08rem;
+}
+
+.storyline__description {
+  max-width: 500px;
+}
+
+.storyline__container {
+  display: flex;
+  margin-top: 60px;
+  gap: 5rem;
+}
+
+.storyline__title {
+  font-size: 20px;
+  letter-spacing: .08rem;
+}
+
+.storyline__text {
+  font-size: 18px;
+  color: #5A688F;
+  word-spacing: .08rem;
+  font-weight: 400;
+}
+
+.cast__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cast__card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cast__image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5rem;
+}
+
+.cast__bio {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.cast__actor {
+  font-size: 18px;
+  font-weight: 400;
+  color: #5079FF;
+  margin: 0;
+}
+
+.cast__character {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
