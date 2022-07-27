@@ -6,54 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { Oval } from 'react-loader-spinner';
 import { TPremier } from '../../types';
 import { useNavigate } from 'react-router';
-
-type TMovie = {
-  movie: TPremier;
-}
-
-const Movie: FC<TMovie> = ({ movie }) => {
-  const navigate = useNavigate();
-
-  const handleCardClick = () => {
-    console.log(movie)
-    navigate(`movie/${movie.kinopoiskId}`)
-  }
-
-  return (
-    <div className={styles.movieGrid__card} onClick={handleCardClick}>
-      <div className={styles.poster__card}>
-        <div className={styles.movieGrid__button}>
-          <i className={`ri-bookmark-line ${styles.movieGrid__bookmark}`}></i>
-        </div>
-
-        <img
-          className={styles.movieGrid__poster}
-          src={movie.posterUrl} 
-          alt="movie-poster"
-        />
-      </div>
-
-      
-
-      <div className={styles.movieGrid__poster__cover}></div>
-
-      <div className={styles.movieGrid__description}>
-        <div className={styles.movieGrid__info}>
-          <p className={styles.info__title}>{movie.year}</p>
-
-          {/* <div className={styles.info__type}>
-            <i className="ri-film-fill"></i>
-            <p>Фильм</p>
-          </div> */}
-
-          <p className={styles.info__pg}>{movie.countries[0].country}</p>
-        </div>
-
-        <h2 className={styles.naming}>{movie.nameRu}</h2>
-      </div>
-    </div>
-  )
-}
+import MovieSmallCard from '../MovieSmallCard/MovieSmallCard';
 
 const MovieGrid = () => {
   const dispatch = useAppDispatch();
@@ -71,7 +24,7 @@ const MovieGrid = () => {
         ? (
           <div className={styles.movieGrid__container}>
             {data.films.items.map((movie: TPremier) => (
-                <Movie movie={movie} key={uuid()} />
+                <MovieSmallCard movie={movie} key={uuid()} />
             ))}
           </div>
           )

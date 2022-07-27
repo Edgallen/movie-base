@@ -86,7 +86,7 @@ export const getPremiersFailed = (): IGetPremiersFailed => {
 export const getPopularFilms: AppThunk = () => (dispatch) => {
   dispatch(getPopularFilmsRequest());
 
-  fetch(`${kinopoiskUrl}/films/top?type=TOP_100_POPULAR_FILMS&page=1`, {
+  fetch(`${kinopoiskUrl}/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=1`, {
       method: 'GET',
       headers: {
         'x-api-key': privatData.apiKey
@@ -135,7 +135,7 @@ export const getPremiers: AppThunk = () => (dispatch) => {
 
   const date = getDate();
 
-  fetch(`${kinopoiskUrl}/films/premieres?year=${date.year}&month=${date.month}`, {
+  fetch(`${kinopoiskUrl}/v2.2/films/premieres?year=${date.year}&month=${date.month}`, {
       method: 'GET',
       headers: {
         'x-api-key': privatData.apiKey

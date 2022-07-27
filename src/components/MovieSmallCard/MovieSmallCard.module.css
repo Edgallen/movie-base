@@ -1,0 +1,82 @@
+.movieGrid__card {
+  position: relative;
+  border-radius: .5rem;
+  width: 250px;
+  cursor: pointer;
+}
+
+.poster__card {
+  position: relative;
+  background-color: #5A688F;
+  position: relative;
+  padding: 10px;
+  border-radius: .5rem;
+  height: 320px;
+  max-width: 220px;
+}
+
+.movieGrid__poster {
+  position: absolute;
+  width: 220px;
+  height: 320px;
+  border-radius: .5rem;
+  object-fit: cover;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.movieGrid__poster__cover {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.08);
+  width: 220px;
+  height: 320px;
+  border-radius: .5rem;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.movieGrid__button {
+  position: absolute;
+  display: flex;
+  border-radius: 5rem;
+  padding: 10px;
+  right: 10px;
+  background-color: rgb(0,0,0,.4);
+  transition: .4s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.movieGrid__button:hover {
+  color: #FC4649;
+}
+
+.movieGrid__description {
+  padding-left: 5px;
+  max-width: 250px;
+  z-index: 1;
+}
+
+.movieGrid__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  height: 30px;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.info__type {
+  display: flex;
+  font-display: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.naming {
+  font-size: 20px;
+  margin: 0;
+}

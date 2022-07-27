@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router';
 import styles from './SearchBar.module.css';
 
 const SearchBar = () => {
+  const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    navigate(`/search/${searchInput}`);
+  }
+
   return (
-  <div className={styles.searchBar}>
+  <form className={styles.searchBar} onSubmit={(e) => handleSubmit(e)}>
       <i className={`ri-search-line ${styles.searchBar__icon}`}></i>
       <input 
         className={styles.searchBar__input} 
@@ -15,7 +22,7 @@ const SearchBar = () => {
           setSearchInput(e.target.value)
         }}
       />
-    </div>
+  </form>
   )
 }
 

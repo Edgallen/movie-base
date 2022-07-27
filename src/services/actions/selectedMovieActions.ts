@@ -1,5 +1,5 @@
 import { TMovie } from "../../types";
-import { checkResponse, kinopoiskStaffUrl, kinopoiskUrl } from "../../utils/fetchData";
+import { checkResponse, kinopoiskUrl } from "../../utils/fetchData";
 import { privatData } from "../../utils/privatData";
 import {
   GET_ACTORS_FAILED,
@@ -112,7 +112,7 @@ export const getActorsFailed = (): IGetActorsFailed => {
 export const getMovie: AppThunk = (id: string) => (dispatch) => {
   dispatch(getMovieRequest());
 
-  fetch(`${kinopoiskUrl}/films/${id}`, {
+  fetch(`${kinopoiskUrl}/v2.2/films/${id}`, {
       method: 'GET',
       headers: {
         'x-api-key': privatData.apiKey
@@ -131,7 +131,7 @@ export const getMovie: AppThunk = (id: string) => (dispatch) => {
 export const getActors: AppThunk = (id: string) => (dispatch) => {
   dispatch(getActorsRequest());
 
-  fetch(`${kinopoiskStaffUrl}/staff?filmId=${id}`, {
+  fetch(`${kinopoiskUrl}/v1/staff?filmId=${id}`, {
       method: 'GET',
       headers: {
         'x-api-key': privatData.apiKey
