@@ -1,3 +1,11 @@
+.header {
+  position: fixed;
+  height: 100vh;
+  opacity: none;
+  overflow: auto;
+  top: 0;
+}
+
 .navBar {
   display: flex;
   position: relative;
@@ -14,6 +22,10 @@
   flex-direction: column;
   align-items: center;
   gap: 5rem;
+}
+
+.navBar__logo {
+  cursor: pointer;
 }
 
 .logo {
