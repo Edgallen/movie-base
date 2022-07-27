@@ -1,25 +1,69 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Oval } from 'react-loader-spinner';
-import { TMovie, TGenres } from '../../types';
-import { useAppSelector } from '../../utils/hooks';
+import { TMovie, TGenres, TActor } from '../../types';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import styles from './MovieInfo.module.css';
 import { v4 as uuid } from 'uuid';
+import { getActors } from '../../services/actions/selectedMovieActions';
+import { useParams } from 'react-router';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
-const MovieCast = () => {
+type MovieCast = {
+  movie: TMovie;
+}
+
+const MovieCast: FC<MovieCast> = ({ movie }) => {
+  const dispatch = useAppDispatch();
+  const actorsInfo = useAppSelector((store) => store.selectedMovie.actorsInfo);
+  const [actors, setActors] = useState<Array<TActor>>([])
+
+  useEffect(() => {
+    if (movie.kinopoiskId) {
+      dispatch(getActors(movie.kinopoiskId));
+    }
+  }, [movie]);
+
+  useEffect(() => {
+    if (actorsInfo.actors.length > 0) {
+      setActors(actorsInfo.actors.filter((actor: TActor) => actor.professionKey === 'ACTOR'));
+    }
+  }, [actorsInfo]);
+
   return (
-    <div className={styles.cast__container}>
-      <div className={styles.cast__card}>
-        <img
-          className={styles.cast__image}
-          src="https://www.film.ru/sites/default/files/people/1456277-1436872.jpg"
-          alt="Tom Hardy"
-        />
-        <div className={styles.cast__bio}>
-            <h3 className={styles.cast__actor}>Том Харди</h3>
-            <h4 className={styles.cast__character}>Эдди Брок</h4>
-        </div>
-      </div>
-    </div>
+    <>
+      {actors.length > 0
+        ? (
+          <div className={styles.cast__container}>
+            {actors.slice(0, 4).map((actor: TActor, index: number) => (
+              <div className={styles.cast__card} key={uuid()}>
+                <img
+                  className={styles.cast__image}
+                  src={actor.posterUrl}
+                  alt="Tom Hardy"
+                />
+                <div className={styles.cast__bio}>
+                    <h3 className={styles.cast__actor}>{actor.nameRu}</h3>
+                    {actor.description && <h4 className={styles.cast__character}>{actor.description}</h4>}
+                </div>
+              </div>
+            ))}
+          </div>
+        )
+        : (
+          <Oval
+            height="50"
+            width="50"
+            color="#FC4649"
+            secondaryColor="#10141F"
+            ariaLabel="line-wave"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        )
+      }
+    </>
   )
 }
 
@@ -43,8 +87,6 @@ type TMovieGenres = {
 }
 
 const MovieGenres: FC<TMovieGenres> = ({ genresArray }) => {
-  // let slicedArray: Array<{ ['genre']: string}> = [];
-
   return (
     <>
       {genresArray && (
@@ -81,6 +123,42 @@ const MoviePoster: FC<TMoviePoster> = ({ movie }) => {
         <h2 className={styles.poster__text}>{movie.year}</h2>
         {movie.filmLength && <h2 className={styles.poster__text}>{getTime(movie.filmLength)}</h2>}
         {movie.countries && <h2 className={styles.poster__text}>{movie.countries[0].country}</h2>}
+
+        <div className={styles.poster__rating}>
+          {movie.ratingImdb && (
+            <div style={{ width: 45, height: 45 }}>
+              <h3 className={styles.rating__text}>imdb</h3>
+              <CircularProgressbar 
+                value={movie.ratingImdb}
+                text={`${movie.ratingImdb}`}
+                maxValue={10}
+                styles={buildStyles({
+                  textColor: "#5079FF",
+                  pathColor: "#5079FF",
+                  trailColor: "#10141F",
+                  textSize: "28px"
+              })}
+              />
+            </div>
+          )}
+          {movie.ratingKinopoisk && (
+            <div style={{ width: 45, height: 45 }}>
+              <h3 className={styles.rating__text}>Кинопоиск</h3>
+              <CircularProgressbar
+                value={movie.ratingKinopoisk}
+                text={`${movie.ratingKinopoisk}`}
+                maxValue={10}
+                styles={buildStyles({
+                  textColor: "#5079FF",
+                  pathColor: "#5079FF",
+                  trailColor: "#10141F",
+                  textSize: "28px"
+              })}
+              />
+            </div>
+          )}
+        </div>
+
       </div>
     </div>
   )
@@ -96,7 +174,7 @@ const MovieInfo = () => {
         <section className={styles.moviePage}>
 
             <MoviePoster movie={movieInfo.movie} />
-
+            
             <div className={styles.description__container}>
               <div>
                 <h1 className={styles.description__title}>{movieInfo.movie.nameRu}</h1>
@@ -114,7 +192,7 @@ const MovieInfo = () => {
 
                   <div className={styles.storyline__cast}>
                     <h2 className={styles.storyline__title}>Актеры</h2>
-                    <MovieCast />
+                    <MovieCast movie={movieInfo.movie} />
                   </div>
 
                 </div>

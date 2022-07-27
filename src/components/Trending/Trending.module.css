@@ -88,9 +88,10 @@
 
 .trending__info {
   display: flex;
+  height: 30px;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   font-size: 15px;
 }
 

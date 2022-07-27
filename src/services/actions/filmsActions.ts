@@ -1,4 +1,4 @@
-import { TPopularFilm } from '../../types';
+import { TMonthsCount, TPopularFilm } from '../../types';
 import { checkResponse, kinopoiskUrl } from '../../utils/fetchData';
 import {
   GET_POPULAR_FILMS_FAILED,
@@ -105,7 +105,37 @@ export const getPopularFilms: AppThunk = () => (dispatch) => {
 export const getPremiers: AppThunk = () => (dispatch) => {
   dispatch(getPremiersRequest());
 
-  fetch(`${kinopoiskUrl}/films/premieres?year=2022&month=JANUARY`, {
+  const getMonth = (monthCount: TMonthsCount) => {
+    type TMonthHash = {[key: number]: string};
+    const hash: TMonthHash = {
+      0: 'JANUARY',
+      1: 'FEBRUARY',
+      2: 'MARCH',
+      3: 'APRIL',
+      4: 'MAY',
+      5: 'JUNE',
+      6: 'JULY',
+      7: 'AUGUST',
+      8: 'SEPTEMBER',
+      9: 'OCTOBER',
+      10: 'NOVEMBER',
+      11: 'DECEMBER'
+    }
+  
+    return hash[monthCount]
+  }
+  
+  const getDate = () => {
+    const date = {
+      year: new Date().getFullYear(),
+      month: getMonth(new Date().getMonth() + 1)
+    }
+    return date;
+  };
+
+  const date = getDate();
+
+  fetch(`${kinopoiskUrl}/films/premieres?year=${date.year}&month=${date.month}`, {
       method: 'GET',
       headers: {
         'x-api-key': privatData.apiKey

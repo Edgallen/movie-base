@@ -43,7 +43,7 @@ const PopularFilm: FC<IPopularFilm> = ({ film }) => {
               <p>Фильм</p>
             </div> */}
 
-            {/* <p className={styles.info__pg}>PG</p> */}
+            <p className={styles.info__pg}>{film.countries[0].country}</p>
           </div>
 
           <h2 className={styles.naming}>{film.nameRu}</h2>

@@ -44,9 +44,9 @@ const Movie: FC<TMovie> = ({ movie }) => {
           {/* <div className={styles.info__type}>
             <i className="ri-film-fill"></i>
             <p>Фильм</p>
-          </div>
+          </div> */}
 
-          <p className={styles.info__pg}>PG</p> */}
+          <p className={styles.info__pg}>{movie.countries[0].country}</p>
         </div>
 
         <h2 className={styles.naming}>{movie.nameRu}</h2>
@@ -65,7 +65,7 @@ const MovieGrid = () => {
 
   return (
     <section className={styles.movieGrid}>
-    <h1 className={styles.movieGrid__title}>Кинопремьеры</h1>
+    <h1 className={styles.movieGrid__title}>Сейчас в кино</h1>
 
     {data.films.items
         ? (

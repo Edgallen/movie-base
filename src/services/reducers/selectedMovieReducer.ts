@@ -1,5 +1,9 @@
+import { TActor, TMovie } from "../../types";
 import { TSelectedMovieActions } from "../actions/selectedMovieActions";
 import {
+  GET_ACTORS_FAILED,
+  GET_ACTORS_REQUEST,
+  GET_ACTORS_SUCCESS,
   GET_MOVIE_FAILED,
   GET_MOVIE_REQUEST,
   GET_MOVIE_SUCCESS,
@@ -13,7 +17,13 @@ type TSelectedMovieReducer = {
   movieInfo: {
     isLoading: boolean;
     isFailed: boolean;
-    movie: any;
+    movie: TMovie;
+  };
+
+  actorsInfo: {
+    isLoading: boolean;
+    isFailed: boolean;
+    actors: Array<TActor>;
   }
 }
 
@@ -24,7 +34,13 @@ const initialState: TSelectedMovieReducer = {
     isLoading: true,
     isFailed: false,
     movie: {}
-  }
+  },
+
+  actorsInfo: {
+    isLoading: true,
+    isFailed: false,
+    actors: []
+  },
 }
 
 export const selectedMovieReducer = (state = initialState, action: TSelectedMovieActions): TSelectedMovieReducer => {
@@ -38,11 +54,15 @@ export const selectedMovieReducer = (state = initialState, action: TSelectedMovi
     case RESET__MOVIE__ID: {
       return {
         movieId: undefined,
-
         movieInfo: {
           isLoading: true,
           isFailed: false,
           movie: {}
+        },
+        actorsInfo: {
+          isLoading: true,
+          isFailed: false,
+          actors: []
         }
       }
     }
@@ -71,6 +91,36 @@ export const selectedMovieReducer = (state = initialState, action: TSelectedMovi
         ...state,
         movieInfo: {
           ...state.movieInfo,
+          isLoading: false,
+          isFailed: true
+        }
+      }
+    }
+    case GET_ACTORS_REQUEST: {
+      return {
+        ...state,
+        actorsInfo: {
+          ...state.actorsInfo,
+          isLoading: true,
+          isFailed: false
+        }
+      }
+    }
+    case GET_ACTORS_SUCCESS: {
+      return {
+        ...state,
+        actorsInfo: {
+          ...state.actorsInfo,
+          isLoading: false,
+          actors: action.payload
+        }
+      }
+    }
+    case GET_ACTORS_FAILED: {
+      return {
+        ...state,
+        actorsInfo: {
+          ...state.actorsInfo,
           isLoading: false,
           isFailed: true
         }

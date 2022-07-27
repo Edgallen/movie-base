@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.poster__container {
+  padding-right: 50px;
+}
+
 .poster__image {
   width: 160px;
   height: 240px;
@@ -24,8 +28,16 @@
   margin: 0;
 }
 
-.description__container {
-  margin-left: 50px;
+.poster__rating {
+  display: flex;
+  gap: 2rem;
+}
+
+.rating__text {
+  font-size: 22px;
+  font-weight: 300;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .description__title {

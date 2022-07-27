@@ -1,4 +1,7 @@
-type TCountries = Array<{ ['countries']: string}>
+type TCountry = {
+  country: string;
+}
+type TCountries = Array<TCountry>
 export type TGenres = Array<{ ['genre']: string}>
 
 export type TPopularFilm = {
@@ -32,3 +35,9 @@ export type TPremier = {
 export type TMovie = {
   [key: string]: any
 }
+
+export type TActor = {
+  [key: string]: any
+}
+
+export type TMonthsCount = number;
