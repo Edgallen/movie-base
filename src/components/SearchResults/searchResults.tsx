@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { Oval } from 'react-loader-spinner';
 import { useParams } from 'react-router';
-import MovieSmallCard from '../../components/MovieSmallCard/MovieSmallCard';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import MovieSmallCard from '../MovieSmallCard/MovieSmallCard';
 import { keyWordSearch, resetSearch, setSearch } from '../../services/actions/searchActions';
 import { TMovie } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
-import styles from './searchResultPage.module.css';
+import styles from './searchResults.module.css';
 import { v4 as uuid } from 'uuid';
 
-export const SearchResultPage = () => {
+const SearchResults = () => {
   const dispatch = useAppDispatch();
   const { searchInput } = useParams();
   const searchData = useAppSelector((store) => store.search.keywordSearch);
@@ -23,8 +22,7 @@ export const SearchResultPage = () => {
   }, [searchInput])
 
   return (
-    <main className={styles.main} >
-      <SearchBar />
+    <section>
       {searchData.response.films 
       ? (
         <>
@@ -61,6 +59,8 @@ export const SearchResultPage = () => {
         </div>
       )
     }
-    </main>
+    </section>
   )
 }
+
+export default SearchResults;

@@ -1,9 +1,9 @@
 import { HomePage } from "./homePage/homePage";
 import { MoviePage } from "./moviePage/moviePage";
-import { SearchResultPage } from "./searchResultPage/searchResultPage";
+import { SearchPage } from "./searchPage/searchPage";
 
 export {
   HomePage,
   MoviePage,
-  SearchResultPage
+  SearchPage
 }

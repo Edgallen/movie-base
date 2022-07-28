@@ -1,33 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import styles from './NavBar.module.css';
 
 type IActiveTab = 'dashboard' | 'movies' | 'TV-shows' | 'bookmark';
 
 const NavBar = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<IActiveTab>('dashboard');
-
-  const handleTabClick = (tab: string) => {
-    switch (tab) {
-      case 'dashboard': {
-        setActiveTab('dashboard');
-        break;
-      }
-      case 'movies': {
-        setActiveTab('movies');
-        break;
-      }
-      case 'TV-shows': {
-        setActiveTab('TV-shows');
-        break;
-      }
-      case 'bookmark': {
-        setActiveTab('bookmark');
-        break;
-      }
-    }
-  }
 
   const returnHome = () => {
     navigate('/');
@@ -42,26 +21,56 @@ const NavBar = () => {
           </div>
 
           <div className={styles.navBar__menu}>
-            <i 
-              className={`ri-layout-grid-fill ${styles.menu_item} ${activeTab === 'dashboard' ? styles.menu_item_active
-              : ''}`}
-              onClick={() => handleTabClick('dashboard')}
-            ></i>
-            <i 
-              className={`ri-film-fill ${styles.menu_item} ${activeTab === 'movies' ? styles.menu_item_active
-              : ''}`}
-              onClick={() => handleTabClick('movies')}
-            ></i>
-            <i 
-              className={`ri-tv-fill ${styles.menu_item} ${activeTab === 'TV-shows' ? styles.menu_item_active
-              : ''}`}
-              onClick={() => handleTabClick('TV-shows')}
-            ></i>
-            <i 
-              className={`ri-bookmark-fill ${styles.menu_item} ${activeTab === 'bookmark' ? styles.menu_item_active
-              : ''}`}
-              onClick={() => handleTabClick('bookmark')}
-            ></i>
+            <NavLink
+              to='/'
+            >
+               {({isActive}) => (
+                  <i 
+                    className={`ri-layout-grid-fill ${styles.menu_item} ${isActive ? styles.menu_item_active : ''}`}
+                  ></i>
+               )}
+            </NavLink>
+            
+            <NavLink
+              to='/movies'
+            >
+               {({isActive}) => (
+                  <i 
+                  className={`ri-film-fill ${styles.menu_item} ${isActive ? styles.menu_item_active : ''}`}
+                  ></i>
+               )}
+            </NavLink>
+
+            <NavLink
+              to='/tvShows'
+            >
+               {({isActive}) => (
+                  <i 
+                    className={`ri-tv-fill ${styles.menu_item} ${isActive ? styles.menu_item_active: ''}`}
+                  ></i>
+               )}
+            </NavLink>
+
+            <NavLink
+              to='/search'
+            >
+               {({isActive}) => (
+                  <i 
+                    className={`ri-search-line ${styles.menu_item} ${isActive ? styles.menu_item_active: ''}`}
+                  ></i>
+               )}
+            </NavLink>
+
+            <NavLink
+              to='/bookmarks'
+            >
+               {({isActive}) => (
+                  <i 
+                  className={`ri-bookmark-fill ${styles.menu_item} ${isActive ? styles.menu_item_active: ''}`}
+                ></i>
+               )}
+            </NavLink>
+
           </div>
 
           <div className={styles.navBar__profile}>

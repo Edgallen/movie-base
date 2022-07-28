@@ -11,8 +11,14 @@ const MovieSmallCard: FC<TMovie> = ({ movie }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    console.log(movie)
-    navigate(`movie/${movie.kinopoiskId}`)
+    console.log(movie);
+    if (movie.kinopoiskId) {
+      navigate(`../movie/${movie.kinopoiskId}`);
+    }
+    if (movie.filmId) {
+      navigate(`../movie/${movie.filmId}`);
+    }
+    
   }
 
   return (
